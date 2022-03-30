@@ -1,0 +1,22 @@
+{
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug triviaGameApi",
+            "program": "${workspaceFolder:triviaGameApi}/.build/debug/triviaGameApi",
+            "args": [],
+            "cwd": "${workspaceFolder:triviaGameApi}",
+            "preLaunchTask": "swift: Build Debug triviaGameApi"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Release triviaGameApi",
+            "program": "${workspaceFolder:triviaGameApi}/.build/release/triviaGameApi",
+            "args": [],
+            "cwd": "${workspaceFolder:triviaGameApi}",
+            "preLaunchTask": "swift: Build Release triviaGameApi"
+        }
+    ]
+}
