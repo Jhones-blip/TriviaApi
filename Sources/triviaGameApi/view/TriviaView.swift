@@ -18,25 +18,19 @@ class TriviaView{
             case 1: 
                 readLine()
                 let questions = triviaPresenter.getquestion() 
+
                 var numberQuestion = 1
                 for question in questions {
                     cleanConsole()
-                    print("\(numberQuestion). \(question.question)")
-                    let answers = getAnswers(question.correctAnswer,question.incorrectAnswers)
-                    let letters: [String] = ["a","b","c","d"]
+
+                    showQuestions(numberQuestion: numberQuestion, question: question)
+
+                    getUserAnswer(question: question)
                     var register:[String:String] = ["a":" ", "b":" ", "c":" ", "d":" "]
-                    var numberLetters = 0
-
-                    for answer in answers{
-                        let letter = letters[numberLetters]
-                        register[letter] = answer
-                        print("\(letter). \(answer)")
-                        numberLetters += 1
-                    }
-
+                    
                     let response = String(readLine()!)
 
-                    if validateResponse(question,register,response){
+                    if validateAnswer(question,register,response){
                         print("Correct answer!")
                     }else{
                         print("Wrong answer")
@@ -49,8 +43,7 @@ class TriviaView{
                 
             default:
                 print("bye!")
-        }
-
+        } 
     }
 
     func getAnswers(_ correctAnswer:String,_ incorrectAnswers: [String]) -> [String]{
@@ -63,7 +56,26 @@ class TriviaView{
         return answers
     }
 
-    func validateResponse(_ answer:UIQuestionData,_ register:[String:String],_ response:String ) -> Bool {
+    func showQuestions(numberQuestion: Int, question:UIQuestionData){
+        print("\(numberQuestion). \(question.question)")
+    }
+
+    func getUserAnswer(question:UIQuestionData){
+
+        let answers = getAnswers(question.correctAnswer,question.incorrectAnswers)
+        let letters: [String] = ["a","b","c","d"]
+        var register:[String:String] = ["a":" ", "b":" ", "c":" ", "d":" "]
+        var numberLetters = 0
+
+        for answer in answers{
+            let letter = letters[numberLetters]
+            register[letter] = answer
+            print("\(letter). \(answer)")
+            numberLetters += 1
+        }
+    }
+
+    func validateAnswer(_ answer:UIQuestionData,_ register:[String:String],_ response:String ) -> Bool {
 
         if answer.correctAnswer != register[response]{
             return false
