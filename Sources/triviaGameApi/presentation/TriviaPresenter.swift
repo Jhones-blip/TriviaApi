@@ -4,7 +4,7 @@ typealias CallbackBlock <T:Any> = (_ value:[T])->Void
 
 class TriviaPresenter{
     static let instance:TriviaPresenter = TriviaPresenter()  
-    let dataService:TriviaDataService = TriviaDataService.instance 
+    let dataService:TriviaDataService = TriviaDataService.instance   
     var questions : [UIQuestionData] = []
 
     func loadQuestions(){

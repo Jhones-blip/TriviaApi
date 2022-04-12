@@ -15,7 +15,7 @@ class TriviaDataService{
         let task = URLSession.shared.dataTask(with: request){ data,response,error in
             guard let data = data else { return }
             do{
-                let decodeData = try JSONDecoder().decode(QuizData.self,from: data)
+                let decodeData = try JSONDecoder().decode(QuizData.self,from: data) 
                 
                 var questions: [UIQuestionData] = []
                 for result in decodeData.results{

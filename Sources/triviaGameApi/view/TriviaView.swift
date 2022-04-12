@@ -25,12 +25,12 @@ class TriviaView{
 
                     showQuestions(numberQuestion: numberQuestion, question: question)
 
-                    getUserAnswer(question: question)
+                    setUserAnswer(question: question)
                     var register:[String:String] = ["a":" ", "b":" ", "c":" ", "d":" "]
                     
                     let response = String(readLine()!)
 
-                    if validateAnswer(question,register,response){
+                    if isCorrectAnswer(question,register,response){
                         print("Correct answer!")
                     }else{
                         print("Wrong answer")
@@ -60,11 +60,11 @@ class TriviaView{
         print("\(numberQuestion). \(question.question)")
     }
 
-    func getUserAnswer(question:UIQuestionData){
+    func setUserAnswer(question:UIQuestionData){
 
         let answers = getAnswers(question.correctAnswer,question.incorrectAnswers)
         let letters: [String] = ["a","b","c","d"]
-        var register:[String:String] = ["a":" ", "b":" ", "c":" ", "d":" "]
+        var register:[String:String] = ["a":" ", "b":" ", "c":" ", "d":" "] 
         var numberLetters = 0
 
         for answer in answers{
@@ -75,7 +75,7 @@ class TriviaView{
         }
     }
 
-    func validateAnswer(_ answer:UIQuestionData,_ register:[String:String],_ response:String ) -> Bool {
+    func isCorrectAnswer(_ answer:UIQuestionData,_ register:[String:String],_ response:String ) -> Bool {
 
         if answer.correctAnswer != register[response]{
             return false
